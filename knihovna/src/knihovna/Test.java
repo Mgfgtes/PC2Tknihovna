@@ -1,17 +1,61 @@
 package knihovna;
 
+import java.util.Scanner;
+
 import knihovna.Roman.zanr;
 
 public class Test {
-
+	
 	public static void main(String[] args) {
-		DatabazeKnih mojeKnihovna = new DatabazeKnih();
-		 
-		mojeKnihovna.addRoman("Na zapadni fronte klid", "Remarque", 1928, zanr.Zanr1);
-		mojeKnihovna.addRoman("Petr a Lucie", "Polland", 1920, zanr.Zanr2);
-		mojeKnihovna.addRoman("Starec a more", "Hemingway", 1952, zanr.Zanr1);
+		enum mode{pridani, odebrani, vypis, konec}
+		mode actionSelector = null; 
 		
-		mojeKnihovna.vypisDatabazeKnih();
+		DatabazeKnih mojeKnihovna = new DatabazeKnih();
+		Scanner sc = new Scanner(System.in);
+		
+		while (actionSelector != mode.konec) {
+			
+			System.out.println("Vyberte pozadovanou cinnost:");
+			System.out.println("pridani \t prida novou knihu do databaze");
+			System.out.println("odebrani \t odebere knihu z databaze");
+			System.out.println("vypis \t\t vypis databaze knih");
+			System.out.println("konec \t\t ukonceni aplikace");					//dodelat mazani konzole
+			
+			actionSelector = mode.valueOf(sc.next());
+			
+			switch (actionSelector) {
+			case pridani:
+				System.out.println(" 1 \t Roman \n 2 \t Ucebnice");
+				int sel = sc.nextInt();
+				
+				System.out.println("Zadejte nazev knihy:");
+				String nazev = sc.nextLine();
+				System.out.println("Zadejte jmeno autora knihy:");
+				String autor = sc.next();
+				System.out.println("Zadejte rok vydani knihy:");
+				int rok = sc.nextInt();
+				
+				if (sel==1) {
+					System.out.println("Zadejte zanr romanu:");
+					zanr z = zanr.valueOf(sc.next());
+					mojeKnihovna.addRoman(nazev, autor, rok, z);
+				}else if (sel==2) {
+																		//Petr - dodelat ucebnici
+				}
+				else {
+																		//Petr - dodelat pripad kdy neni zadan ani roman ani ucebnice
+				}
+				break;
+			case odebrani:
+																		//Mates dodelat mazani
+				break;
+			default:													//Petr - dodelat pripad kdy nebyla zadana validni operace se seznamem
+				break;
+			}
+			
+			
+			
+		}
 	}
 
 }
