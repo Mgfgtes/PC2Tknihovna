@@ -22,6 +22,8 @@ public class Test {
 			System.out.println("konec \t\t ukonceni aplikace");					//dodelat mazani konzole
 			
 			actionSelector = mode.valueOf(sc.next());
+			String nazev = null, autor;
+			int rok;
 			
 			switch (actionSelector) {
 			case pridani:
@@ -29,11 +31,15 @@ public class Test {
 				int sel = sc.nextInt();
 				
 				System.out.println("Zadejte nazev knihy:");
-				String nazev = sc.nextLine();
+				nazev = sc.nextLine();
+				nazev = sc.nextLine();
+				
 				System.out.println("Zadejte jmeno autora knihy:");
-				String autor = sc.next();
+				autor = sc.nextLine();
+				
 				System.out.println("Zadejte rok vydani knihy:");
-				int rok = sc.nextInt();
+				rok = sc.nextInt();
+				
 				
 				if (sel==1) {
 					System.out.println("Zadejte zanr romanu:");
@@ -47,7 +53,13 @@ public class Test {
 				}
 				break;
 			case odebrani:
-																		//Mates dodelat mazani
+				System.out.println("Zadejte nazev knihy:");
+				nazev = sc.nextLine();
+				nazev = sc.nextLine();									//Mates dodelat mazani
+				mojeKnihovna.removeKniha(nazev);
+				break;
+			case vypis:
+				mojeKnihovna.vypisDatabazeKnih();
 				break;
 			default:													//Petr - dodelat pripad kdy nebyla zadana validni operace se seznamem
 				break;

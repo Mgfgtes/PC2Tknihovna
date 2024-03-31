@@ -32,6 +32,17 @@ public class DatabazeKnih {
 		
 	}
 	
+	public void removeKniha(String jmeno) {
+		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
+			Kniha kniha = (Kniha) iterator.next();
+			if(kniha.getNazev().equals(jmeno)) {
+				seznamKnih.remove(kniha);
+			} 
+			
+		}
+		
+	}
+	
 	public void vypisDatabazeKnih() {
 		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
 			Kniha kniha = (Kniha) iterator.next();
