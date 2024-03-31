@@ -18,4 +18,8 @@ public class Roman extends Kniha {
 		Zanr = zanr;
 	}
 	
+	@Override public String toString(){
+		return this.getNazev()+"\t"+getAutor()+", "+getZanr()+", "+getRok()+", "+getDostupnost();	
+	}
+	
 }

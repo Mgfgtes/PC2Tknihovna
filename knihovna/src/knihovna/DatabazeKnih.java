@@ -43,10 +43,16 @@ public class DatabazeKnih {
 		
 	}
 	
+	public void editKniha() {
+		
+	}
+	
+	
 	public void vypisDatabazeKnih() {
 		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
-			Kniha kniha = (Kniha) iterator.next();									//upravit podle zadani
-			System.out.println(kniha.getNazev());
+			Kniha kniha = (Kniha) iterator.next();
+			System.out.println(kniha);
+			
 		}
 	}
 		

@@ -47,8 +47,13 @@ public abstract class Kniha implements Comparable<Kniha> {
 		}
 	}
 
-	public boolean getDostupnost() {
-		return dostupnost;
+	public String getDostupnost() {
+		if (dostupnost) {
+			return "Dostupne";
+		}
+		else {
+			return "Zapujceno";
+		}
 	}
 
 	public void Vypujceni() {
@@ -63,5 +68,6 @@ public abstract class Kniha implements Comparable<Kniha> {
     {
 		return this.nazev.compareTo(a.nazev);
     }
+	
 	
 }
