@@ -45,7 +45,7 @@ public class DatabazeKnih {
 	
 	public void vypisDatabazeKnih() {
 		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
-			Kniha kniha = (Kniha) iterator.next();
+			Kniha kniha = (Kniha) iterator.next();									//upravit podle zadani
 			System.out.println(kniha.getNazev());
 		}
 	}

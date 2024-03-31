@@ -7,7 +7,9 @@ import knihovna.Roman.zanr;
 public class Test {
 	
 	public static void main(String[] args) {
-		enum mode{pridani, odebrani, vypis, konec}
+		enum mode{	pridani, odebrani, editace, vypujceni, vyhledani,
+					vypis, vypisAutora, vypisZanru, vypisVypujcenych,
+					ulozeniDoSouboru, nacteniZeSouboru, konec}
 		mode actionSelector = null; 
 		
 		DatabazeKnih mojeKnihovna = new DatabazeKnih();
