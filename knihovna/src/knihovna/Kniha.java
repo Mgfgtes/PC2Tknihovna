@@ -55,7 +55,7 @@ public abstract class Kniha implements Comparable<Kniha> {
 			return "Zapujceno";
 		}
 	}
-
+	
 	public void Vypujceni() {
 		this.dostupnost = false;
 	}

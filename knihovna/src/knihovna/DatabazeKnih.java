@@ -43,10 +43,25 @@ public class DatabazeKnih {
 		
 	}
 	
-	public void editKniha() {
-		
+	public void zapujceniKnihy(String jmeno) {
+		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
+			Kniha kniha = (Kniha) iterator.next();
+			if(kniha.getNazev().equals(jmeno)) {
+				kniha.Vypujceni();
+			} 
+			
+		}
 	}
 	
+	public void vraceniKnihy(String jmeno) {
+		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
+			Kniha kniha = (Kniha) iterator.next();
+			if(kniha.getNazev().equals(jmeno)) {
+				kniha.Vraceni();
+			} 
+			
+		}
+	}
 	
 	public void vypisDatabazeKnih() {
 		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
