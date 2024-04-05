@@ -65,5 +65,34 @@ public class DatabazeKnih {
 			System.out.println(kniha);
 		}
 	}
-		
+	
+	public void vypisAutora(String autor) {
+		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
+			Kniha kniha = (Kniha) iterator.next();
+			if(kniha.getAutor().equals(autor)) {
+				System.out.println(kniha);
+			}
+		}
+	}
+	
+	public void vypisZanru(zanr z) {
+		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
+			Kniha kniha = (Kniha) iterator.next();
+			if (kniha.instanceOf(kniha)=="Roman") {
+				Roman roman = (Roman) kniha;
+				if (roman.getZanr().equals(z)) {
+					System.out.println(roman);
+				}
+			}
+		}
+	}
+	
+	public void vypisVypujcenych() {
+		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
+			Kniha kniha = (Kniha) iterator.next();
+			if(kniha.getDostupnost()=="Zapujceno") {
+				System.out.println(kniha);
+			}
+		}
+	}
 }

@@ -130,13 +130,18 @@ public class Test {
 				mojeKnihovna.vypisDatabazeKnih();
 				break;
 			case vypisAutora:
-				
+				System.out.println("\nZadejte jmeno autora jehoz knihy chcete vyhledat");
+				autor = sc.nextLine();
+				autor = sc.nextLine();
+				mojeKnihovna.vypisAutora(autor);
 				break;
 			case vypisZanru:
-				
+				System.out.println("\nZadejte zanr knih ktere chcete vyhledat");
+				zanr z = zanr.valueOf(sc.next());
+				mojeKnihovna.vypisZanru(z);
 				break;
 			case vypisVypujcenych:
-				
+				mojeKnihovna.vypisVypujcenych();
 				break;
 			case ulozeniDoSouboru:
 				
