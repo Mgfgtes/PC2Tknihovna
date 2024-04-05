@@ -19,7 +19,7 @@ public class Roman extends Kniha {
 	}
 	
 	@Override public String toString(){
-		return this.getNazev()+"\t"+getAutor()+", "+getZanr()+", "+getRok()+", "+getDostupnost();	
+		return this.getNazev()+"\t Roman, "+getAutor()+", "+getZanr()+", "+getRok()+", "+getDostupnost();	
 	}
 	
 }

@@ -32,42 +32,37 @@ public class DatabazeKnih {
 		
 	}
 	
-	public void removeKniha(String jmeno) {
+	public Kniha vyhledaniKnihy(String jmeno) {
+		Kniha res=null;
 		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
 			Kniha kniha = (Kniha) iterator.next();
 			if(kniha.getNazev().equals(jmeno)) {
-				seznamKnih.remove(kniha);
-			} 
-			
+				res=kniha;
+			}
 		}
-		
+		return res;
+	}
+	
+	public void removeKniha(String jmeno) {
+		seznamKnih.remove(vyhledaniKnihy(jmeno));
 	}
 	
 	public void zapujceniKnihy(String jmeno) {
-		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
-			Kniha kniha = (Kniha) iterator.next();
-			if(kniha.getNazev().equals(jmeno)) {
-				kniha.Vypujceni();
-			} 
-			
-		}
+		vyhledaniKnihy(jmeno).Vypujceni();
 	}
 	
 	public void vraceniKnihy(String jmeno) {
-		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
-			Kniha kniha = (Kniha) iterator.next();
-			if(kniha.getNazev().equals(jmeno)) {
-				kniha.Vraceni();
-			} 
-			
-		}
+		vyhledaniKnihy(jmeno).Vraceni();
+	}
+	
+	public void infoKniha(String jmeno) {
+		System.out.println(vyhledaniKnihy(jmeno));
 	}
 	
 	public void vypisDatabazeKnih() {
 		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
 			Kniha kniha = (Kniha) iterator.next();
 			System.out.println(kniha);
-			
 		}
 	}
 		

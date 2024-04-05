@@ -18,7 +18,7 @@ public class Ucebnice extends Kniha {
 	}
 
 	@Override public String toString(){
-		return this.getNazev()+"\t"+getAutor()+", "+getRocnik()+", "+getRok()+", "+getDostupnost();	
+		return this.getNazev()+"\t Ucebnice, "+getAutor()+", "+getRocnik()+", "+getRok()+", "+getDostupnost();	
 	}
 
 }

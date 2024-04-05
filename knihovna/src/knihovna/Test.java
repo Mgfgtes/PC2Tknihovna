@@ -7,7 +7,7 @@ import knihovna.Roman.zanr;
 public class Test {
 	
 	public static void main(String[] args) {
-		enum mode{	pridani, odebrani, editace, vypujceni, vraceni, vyhledani,
+		enum mode{	pridani, odebrani, editace, vypujceni, vraceni,
 					vypis, vypisKnihy, vypisAutora, vypisZanru, vypisVypujcenych,
 					ulozeniDoSouboru, nacteniZeSouboru, konec}
 		mode actionSelector = null; 
@@ -21,6 +21,8 @@ public class Test {
 			System.out.println("pridani \t prida novou knihu do databaze");
 			System.out.println("odebrani \t odebere knihu z databaze");
 			System.out.println("editace \t upravi vlastnosti knihy");
+			System.out.println("vypujceni \t vypujceni knihy");
+			System.out.println("vraceni \t vraceni knihy");
 			System.out.println("vypis \t\t vypis databaze knih");
 			System.out.println("vypisKnihy \t vypis informaci o knize");
 			System.out.println("vypisAutora \t vypis knih daneho autora");
@@ -105,17 +107,24 @@ public class Test {
 				
 				break;
 			case vypujceni:
-				System.out.println("\nZadejte nazev vracene knihy");
-				nazev = sc.nextLine();
-				mojeKnihovna.zapujceniKnihy(nazev);
-				break;
-			case vraceni:
 				System.out.println("\nZadejte nazev vypujcovane knihy");
 				nazev = sc.nextLine();
-				mojeKnihovna.vraceniKnihy(nazev);
+				nazev = sc.nextLine();
+				mojeKnihovna.zapujceniKnihy(nazev);
+				System.out.println("Kniha byla vypujcena");
 				break;
-			case vyhledani:
-				
+			case vraceni:
+				System.out.println("\nZadejte nazev vracene knihy");
+				nazev = sc.nextLine();
+				nazev = sc.nextLine();
+				mojeKnihovna.vraceniKnihy(nazev);
+				System.out.println("Kniha byla vracena");
+				break;
+			case vypisKnihy:
+				System.out.println("\nZadejte nazev hledane knihy");
+				nazev = sc.nextLine();
+				nazev = sc.nextLine();
+				mojeKnihovna.infoKniha(nazev);
 				break;
 			case vypis:
 				mojeKnihovna.vypisDatabazeKnih();
