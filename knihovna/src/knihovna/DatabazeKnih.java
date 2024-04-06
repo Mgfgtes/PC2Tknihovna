@@ -1,6 +1,10 @@
 package knihovna;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -67,11 +71,18 @@ public class DatabazeKnih {
 	}
 	
 	public void vypisAutora(String autor) {
+		List<Kniha> rokSorted = new ArrayList<Kniha>();
+		
 		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
 			Kniha kniha = (Kniha) iterator.next();
 			if(kniha.getAutor().equals(autor)) {
-				System.out.println(kniha);
+				rokSorted.add(kniha);
 			}
+		}
+		Collections.sort(rokSorted, new KnihaComparator());
+		
+		for (Kniha kniha : rokSorted) {
+			System.out.println(kniha);
 		}
 	}
 	
