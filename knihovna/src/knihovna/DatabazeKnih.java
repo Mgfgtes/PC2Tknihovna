@@ -1,9 +1,7 @@
 package knihovna;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -38,11 +36,8 @@ public class DatabazeKnih {
 	
 	public Kniha vyhledaniKnihy(String jmeno) {
 		Kniha res=null;
-		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
-			Kniha kniha = (Kniha) iterator.next();
-			if(kniha.getNazev().equals(jmeno)) {
-				res=kniha;
-			}
+		for (Kniha kniha : seznamKnih) {
+			if(kniha.getNazev().equals(jmeno)) res=kniha;
 		}
 		return res;
 	}
@@ -64,17 +59,13 @@ public class DatabazeKnih {
 	}
 	
 	public void vypisDatabazeKnih() {
-		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
-			Kniha kniha = (Kniha) iterator.next();
-			System.out.println(kniha);
-		}
+		for (Kniha kniha : seznamKnih) System.out.println(kniha);
 	}
 	
 	public void vypisAutora(String autor) {
 		List<Kniha> rokSorted = new ArrayList<Kniha>();
 		
-		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
-			Kniha kniha = (Kniha) iterator.next();
+		for (Kniha kniha : seznamKnih) {
 			if(kniha.getAutor().equals(autor)) {
 				rokSorted.add(kniha);
 			}
@@ -87,9 +78,8 @@ public class DatabazeKnih {
 	}
 	
 	public void vypisZanru(zanr z) {
-		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
-			Kniha kniha = (Kniha) iterator.next();
-			if (kniha.instanceOf(kniha)=="Roman") {
+		for (Kniha kniha : seznamKnih) {
+			if (kniha.instanceOfRoman(kniha)) {
 				Roman roman = (Roman) kniha;
 				if (roman.getZanr().equals(z)) {
 					System.out.println(roman);
@@ -99,8 +89,7 @@ public class DatabazeKnih {
 	}
 	
 	public void vypisVypujcenych() {
-		for (Iterator iterator = seznamKnih.iterator(); iterator.hasNext();) {
-			Kniha kniha = (Kniha) iterator.next();
+		for (Kniha kniha : seznamKnih) {
 			if(kniha.getDostupnost()=="Zapujceno") {
 				System.out.println(kniha);
 			}

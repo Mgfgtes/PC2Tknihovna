@@ -15,6 +15,8 @@ public class Test {
 		DatabazeKnih mojeKnihovna = new DatabazeKnih();
 		Scanner sc = new Scanner(System.in);
 		
+		Connect con = new Connect();
+		
 		while (actionSelector != mode.konec) {
 			
 			System.out.println("Vyberte pozadovanou cinnost:");
@@ -163,10 +165,7 @@ public class Test {
 				
 				break;
 			}
-			
-			
-			
 		}
+	sc.close();
 	}
-
 }

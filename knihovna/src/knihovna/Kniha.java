@@ -64,10 +64,14 @@ public abstract class Kniha implements Comparable<Kniha> {
 		this.dostupnost = true;
 	}
 	
-	public String instanceOf(Kniha kniha) {
-		if(kniha instanceof Roman) return"Roman";
-		if(kniha instanceof Ucebnice) return"Ucebnice";
-		return null;
+	public boolean instanceOfRoman(Kniha kniha) {
+		if(kniha instanceof Roman) return true;
+		return false;
+	}
+	
+	public boolean instanceOfUcebnice(Kniha kniha) {
+		if(kniha instanceof Ucebnice) return true;
+		return false;
 	}
 	
 	@Override public int compareTo(Kniha a)
