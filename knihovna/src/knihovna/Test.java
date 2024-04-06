@@ -32,7 +32,14 @@ public class Test {
 			System.out.println("nacteniZeSouboru \t nacteni knihy ze souboru do databaze");
 			System.out.println("konec \t\t ukonceni aplikace");
 			
-			actionSelector = mode.valueOf(sc.next());
+			do {
+				try {
+					actionSelector = mode.valueOf(sc.next());
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			} while (actionSelector==null);
+			
 			String nazev = null, autor;
 			int rok, sel;
 			
