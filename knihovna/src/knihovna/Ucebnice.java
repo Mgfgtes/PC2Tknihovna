@@ -14,7 +14,11 @@ public class Ucebnice extends Kniha {
 	}
 
 	public void setRocnik(int rocnik) {
-		this.rocnik = rocnik;
+		do {
+			this.rocnik = rocnik;
+			if(rocnik>9) System.out.println("Zadany rocnik je nespravny");
+		} while (rocnik>9);
+		
 	}
 
 	@Override public String toString(){
