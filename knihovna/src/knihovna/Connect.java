@@ -34,6 +34,28 @@ public class Connect {
 	    return false;
 	}
 	
+	public DatabazeKnih selectAll(){
+		DatabazeKnih mojeDB = new DatabazeKnih();
+        String sql = "SELECT nazev,autor,rok,dostupnost,roman,ucebnice,zanr,rocnik FROM knihovna";
+        try {
+        	Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(sql);
+            while (rs.next()) {
+            	if (rs.getBoolean("roman")) {
+					mojeDB.addRoman(rs.getString("nazev"), rs.getString("autor"), rs.getInt("rok"), 
+							Roman.setZanrByString(rs.getString("zanr")), rs.getBoolean("dostupnost"));
+				}
+            	if (rs.getBoolean("ucebnice")) {
+					mojeDB.addUcebnice(rs.getString("nazev"), rs.getString("autor"), rs.getInt("rok"), 
+							rs.getInt("rocnik"), rs.getBoolean("dostupnost"));
+				}
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return mojeDB;
+	}
+	
 	public void insertRecord(Kniha kniha) {
         String sql = "INSERT INTO knihovna(nazev,autor,rok,dostupnost,roman,ucebnice,zanr,rocnik) VALUES(?,?,?,?,?,?,?,?)";
         try {
@@ -61,6 +83,19 @@ public class Connect {
             System.out.println(e.getMessage());
         }
     }
+	
+	public void delete() {
+        String sql = "DROP TABLE knihovna";
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 	
 	public void disconnect() { 
 		if (conn != null) {

@@ -16,6 +16,11 @@ public class Test {
 		Scanner sc = new Scanner(System.in);
 		String nazev, autor;
 		
+		Connect con = new Connect();
+		System.out.println("Pripojeni k databazi " + con.connect());
+		mojeKnihovna = con.selectAll();
+		con.disconnect();
+		
 		while (actionSelector != mode.konec) {
 			
 			System.out.println("Vyberte pozadovanou cinnost:");
@@ -105,6 +110,7 @@ public class Test {
 				break;
 			case konec:
 				mojeKnihovna.ulozeniDatabaze();
+				System.out.println("Databaze ulozena");
 				break;
 			default:
 				

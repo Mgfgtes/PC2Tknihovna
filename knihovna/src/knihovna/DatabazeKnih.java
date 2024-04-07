@@ -67,7 +67,7 @@ public class DatabazeKnih {
 				}
 			} while (!isCreated);
 		}
-		
+	sc.close();	
 	}
 	
 	public boolean addRoman(String nazev, String autor, int rok, zanr Zanr)
@@ -78,6 +78,10 @@ public class DatabazeKnih {
 			return false;
 	}
 	
+	public void addRoman(String nazev, String autor, int rok, zanr Zanr, boolean dostupnost) {
+		seznamKnih.add(new Roman(nazev, autor, rok, Zanr, dostupnost));
+	}
+	
 	public boolean addUcebnice(String nazev, String autor, int rok, int vhodnyRocnik) 
 	{
 		
@@ -86,6 +90,11 @@ public class DatabazeKnih {
 		else
 			return false;
 		
+	}
+	
+	public void addUcebnice(String nazev, String autor, int rok, int vhodnyRocnik, boolean dostupnost) 
+	{
+		seznamKnih.add(new Ucebnice(nazev, autor, rok, vhodnyRocnik, dostupnost));
 	}
 	
 	public Kniha vyhledaniKnihy(String jmeno) {
@@ -161,6 +170,7 @@ public class DatabazeKnih {
 	public void ulozeniDatabaze() {
 		Connect con = new Connect();
 		System.out.println("Pripojeni k databazi " + con.connect());
+		con.delete();
 		if (con.createTable()) System.out.println("Relace vytvorena");
 		
 		for (Kniha kniha : seznamKnih) {

@@ -11,6 +11,12 @@ public abstract class Kniha implements Comparable<Kniha> {
 		this.rok =rokVydani;
 		this.dostupnost = true;
 	}
+	public Kniha(String nazevKnihy, String autorKnihy, int rokVydani, boolean dostupnost) {
+		this.nazev = nazevKnihy;
+		this.autor = autorKnihy;
+		this.rok =rokVydani;
+		this.dostupnost = dostupnost;
+	}
 
 	public String getNazev() {
 		return nazev;

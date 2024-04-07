@@ -9,6 +9,10 @@ public class Roman extends Kniha {
 		super(nazevKnihy, autorKnihy, rokVydani);
 		this.setZanr(zanrKnihy);
 	}
+	public Roman(String nazevKnihy, String autorKnihy, int rokVydani, zanr zanrKnihy, boolean dostupnost) {
+		super(nazevKnihy, autorKnihy, rokVydani, dostupnost);
+		this.setZanr(zanrKnihy);
+	}
 
 	public zanr getZanr() {
 		return Zanr;
@@ -32,6 +36,22 @@ public class Roman extends Kniha {
 
 	public void setZanr(zanr zanr) {
 		Zanr = zanr;
+	}
+	
+	public static zanr setZanrByString(String z) {
+		switch (z) {
+		case "Zanr1":
+			return zanr.Zanr1;
+		case "Zanr2":
+			return zanr.Zanr2;
+		case "Zanr3":
+			return zanr.Zanr3;	
+		case "Zanr4":
+			return zanr.Zanr4;			
+		case "Zanr5":
+			return zanr.Zanr5;
+		}
+		return null;
 	}
 	
 	@Override public String toString(){

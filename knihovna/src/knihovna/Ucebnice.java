@@ -9,6 +9,11 @@ public class Ucebnice extends Kniha {
 		this.rocnik=vhodnyRocnik;
 	}
 	
+	public Ucebnice(String nazevKnihy, String autorKnihy, int rokVydani, int vhodnyRocnik, boolean dostupnost) {
+		super(nazevKnihy, autorKnihy, rokVydani, dostupnost);
+		this.rocnik=vhodnyRocnik;
+	}
+	
 	public int getRocnik() {
 		return rocnik;
 	}
