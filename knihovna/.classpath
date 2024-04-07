@@ -6,7 +6,17 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/matouskova/git/PC2Tknihovna/knihovna/src/knihovna/sqlite-jdbc-3.45.2.0.jar">
+	<classpathentry kind="lib" path="C:/Users/matouskova/git/PC2Tknihovna/knihovna/src/sqlite-jdbc-3.45.2.0.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/matouskova/git/PC2Tknihovna/knihovna/src/slf4j-api-2.1.0-alpha1.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/matouskova/git/PC2Tknihovna/knihovna/src/slf4j-simple-2.1.0-alpha1.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

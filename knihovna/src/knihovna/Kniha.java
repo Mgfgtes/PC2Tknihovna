@@ -46,8 +46,12 @@ public abstract class Kniha implements Comparable<Kniha> {
 			this.rok = rok;
 		}
 	}
-
-	public String getDostupnost() {
+	
+	public boolean getDostupnost() {
+		return dostupnost;
+	}
+	
+	public String getDostupnostString() {
 		if (dostupnost) {
 			return "Dostupne";
 		}

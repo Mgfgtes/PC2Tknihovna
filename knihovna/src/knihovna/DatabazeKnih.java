@@ -3,6 +3,7 @@ package knihovna;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -14,6 +15,59 @@ public class DatabazeKnih {
 	
 	public DatabazeKnih() {
 		seznamKnih = new TreeSet<>();
+	}
+	
+	public void pridaniKnihy() {
+		String nazev = null, autor;
+		int rok, sel;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		do {
+			System.out.println(" 1 \t Roman \n 2 \t Ucebnice");
+			sel = sc.nextInt();
+			if(sel>2 || sel<1) System.out.println("Neznamy druh knihy");
+		} while (sel>2 || sel<1);
+		
+		
+		System.out.println("Zadejte nazev knihy:");
+		nazev = sc.nextLine();
+		nazev = sc.nextLine();
+		
+		System.out.println("\nZadejte jmeno autora knihy:");
+		autor = sc.nextLine();
+		
+		System.out.println("\nZadejte rok vydani knihy:");
+		rok = sc.nextInt();
+		
+		
+		if (sel==1) {
+			Boolean isCreated=false;
+			do {
+				System.out.println("\nZadejte zanr romanu:");
+				try {
+					zanr z = zanr.valueOf(sc.next());
+					addRoman(nazev, autor, rok, z);
+					isCreated = true;
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			} while (!isCreated);
+			
+		}else if (sel==2) {
+			Boolean isCreated=false;
+			do {
+				System.out.println("\nZadejte rocnik pro ktery je ucebnice vhodna:");
+				try {
+					int roc = sc.nextInt();
+					addUcebnice(nazev, autor, rok, roc);
+					isCreated=true;
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			} while (!isCreated);
+		}
+		
 	}
 	
 	public boolean addRoman(String nazev, String autor, int rok, zanr Zanr)
@@ -47,11 +101,19 @@ public class DatabazeKnih {
 	}
 	
 	public void zapujceniKnihy(String jmeno) {
-		vyhledaniKnihy(jmeno).Vypujceni();
+		try {
+			vyhledaniKnihy(jmeno).Vypujceni();
+		} catch (Exception e) {
+			System.out.println("Kniha nenalezena");
+		}
 	}
 	
 	public void vraceniKnihy(String jmeno) {
-		vyhledaniKnihy(jmeno).Vraceni();
+		try {
+			vyhledaniKnihy(jmeno).Vraceni();
+		} catch (Exception e) {
+			System.out.println("Kniha nenalezena");
+		}
 	}
 	
 	public void infoKniha(String jmeno) {
@@ -90,9 +152,20 @@ public class DatabazeKnih {
 	
 	public void vypisVypujcenych() {
 		for (Kniha kniha : seznamKnih) {
-			if(kniha.getDostupnost()=="Zapujceno") {
+			if(kniha.getDostupnostString()=="Zapujceno") {
 				System.out.println(kniha);
 			}
 		}
+	}
+	
+	public void ulozeniDatabaze() {
+		Connect con = new Connect();
+		System.out.println("Pripojeni k databazi " + con.connect());
+		if (con.createTable()) System.out.println("Relace vytvorena");
+		
+		for (Kniha kniha : seznamKnih) {
+			con.insertRecord(kniha);
+		}
+		con.disconnect();
 	}
 }

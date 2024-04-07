@@ -13,13 +13,29 @@ public class Roman extends Kniha {
 	public zanr getZanr() {
 		return Zanr;
 	}
+	public String getZanrString() {
+		switch (Zanr) {
+		case Zanr1:
+			return "Zanr1";
+		case Zanr2:
+			return "Zanr2";
+		case Zanr3:
+			return "Zanr3";
+		case Zanr4:
+			return "Zanr4";
+		case Zanr5:
+			return "Zanr5";
+		default:
+			return null;
+		}
+	}
 
 	public void setZanr(zanr zanr) {
 		Zanr = zanr;
 	}
 	
 	@Override public String toString(){
-		return this.getNazev()+"\t Roman, "+getAutor()+", "+getZanr()+", "+getRok()+", "+getDostupnost();	
+		return this.getNazev()+"\t Roman, "+getAutor()+", "+getZanr()+", "+getRok()+", "+getDostupnostString();	
 	}
 	
 }
