@@ -1,5 +1,10 @@
 package knihovna;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -97,12 +102,85 @@ public class DatabazeKnih {
 		seznamKnih.add(new Ucebnice(nazev, autor, rok, vhodnyRocnik, dostupnost));
 	}
 	
-	public Kniha vyhledaniKnihy(String jmeno) {
+	public Kniha vyhledaniKnihy(String nazev) {
 		Kniha res=null;
 		for (Kniha kniha : seznamKnih) {
-			if(kniha.getNazev().equals(jmeno)) res=kniha;
+			if(kniha.getNazev().equals(nazev)) res=kniha;
 		}
+		if(res==null) System.out.println("Kniha nenalezena");
 		return res;
+	}
+	
+	public boolean ulozeniKnihy(String nazev) {
+		try {
+			if(vyhledaniKnihy(nazev)==null) return false;
+			FileWriter fw = new FileWriter(nazev+".txt");
+			BufferedWriter out = new BufferedWriter(fw);
+			 
+			Kniha ukladanaKniha = vyhledaniKnihy(nazev);
+			
+			out.write(ukladanaKniha.getNazev() + ";" + ukladanaKniha.getAutor() + ";" + ukladanaKniha.getRok() + ";" + ukladanaKniha.getDostupnost());
+			if(ukladanaKniha.instanceOfRoman()) {
+				Roman r = (Roman) ukladanaKniha;
+				out.write(";" + "Roman" + ";" + r.getZanr());
+			}
+			if (ukladanaKniha.instanceOfUcebnice()) {
+				Ucebnice ucebnice = (Ucebnice) ukladanaKniha;
+				out.write(";" + "Ucebice" + ";" + ucebnice.getRocnik());
+			}
+			
+			out.close();
+			fw.close();
+		}
+		catch (IOException e) {
+			System.out.println("Soubor nelze vytvorit");
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean nacteniKnihy(String jmenoSouboru) {
+		FileReader fr=null;
+		BufferedReader in=null;
+		try {
+			fr = new FileReader(jmenoSouboru + ".txt");
+			in = new BufferedReader(fr);
+			String radek=in.readLine();
+			String[] castiTextu = radek.split(";");
+			if (castiTextu.length!=6)
+				return false;
+			if (castiTextu[4].equals("Roman")) {
+				addRoman(castiTextu[0], castiTextu[1], Integer.valueOf(castiTextu[2]), Roman.setZanrByString(castiTextu[5]), Boolean.valueOf(castiTextu[3]));
+			}
+			if (castiTextu[4]=="Ucebnice") {
+				addUcebnice(castiTextu[0], castiTextu[1], Integer.valueOf(castiTextu[2]), Integer.valueOf(castiTextu[5]), Boolean.valueOf(castiTextu[3]));
+			}
+		}
+		catch (IOException e) {
+			System.out.println("Soubor  nelze otevrit");
+			return false;
+		} 
+		catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Chyba integrity dat v souboru");
+			return false;
+		}
+		finally
+		{
+			try
+			{	if (in!=null)
+				{
+					in.close();
+					fr.close();
+				}
+			}
+			catch (IOException e) {
+				System.out.println("Soubor  nelze zavrit");
+				return false;
+			} 
+		}
+		
+		return true;
 	}
 	
 	public void removeKniha(String jmeno) {
@@ -150,7 +228,7 @@ public class DatabazeKnih {
 	
 	public void vypisZanru(zanr z) {
 		for (Kniha kniha : seznamKnih) {
-			if (kniha.instanceOfRoman(kniha)) {
+			if (kniha.instanceOfRoman()) {
 				Roman roman = (Roman) kniha;
 				if (roman.getZanr().equals(z)) {
 					System.out.println(roman);

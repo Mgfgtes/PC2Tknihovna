@@ -64,15 +64,15 @@ public class Connect {
             pstmt.setString(2, kniha.getAutor());
             pstmt.setInt(3, kniha.getRok());
             pstmt.setBoolean(4, kniha.getDostupnost());
-            pstmt.setBoolean(5, kniha.instanceOfRoman(kniha));
-            pstmt.setBoolean(6, kniha.instanceOfUcebnice(kniha));
-            if(kniha.instanceOfRoman(kniha)) {
+            pstmt.setBoolean(5, kniha.instanceOfRoman());
+            pstmt.setBoolean(6, kniha.instanceOfUcebnice());
+            if(kniha.instanceOfRoman()) {
             	Roman roman = (Roman) kniha;
             	pstmt.setString(7, roman.getZanr().toString());
             	pstmt.setInt(8, 0);
             }
             
-            if (kniha.instanceOfUcebnice(kniha)) {
+            if (kniha.instanceOfUcebnice()) {
 				Ucebnice ucebnice = (Ucebnice) kniha;
 				pstmt.setString(7, null);
 				pstmt.setInt(8, ucebnice.getRocnik());

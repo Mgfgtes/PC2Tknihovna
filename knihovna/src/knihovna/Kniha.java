@@ -74,13 +74,13 @@ public abstract class Kniha implements Comparable<Kniha> {
 		this.dostupnost = true;
 	}
 	
-	public boolean instanceOfRoman(Kniha kniha) {
-		if(kniha instanceof Roman) return true;
+	public boolean instanceOfRoman() {
+		if(this instanceof Roman) return true;
 		return false;
 	}
 	
-	public boolean instanceOfUcebnice(Kniha kniha) {
-		if(kniha instanceof Ucebnice) return true;
+	public boolean instanceOfUcebnice() {
+		if(this instanceof Ucebnice) return true;
 		return false;
 	}
 	

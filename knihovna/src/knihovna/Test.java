@@ -103,10 +103,16 @@ public class Test {
 				mojeKnihovna.vypisVypujcenych();
 				break;
 			case ulozeniDoSouboru:
-				
+				System.out.println("\nZadejte nazev knihy kterou chcete ulozit");
+				nazev = sc.nextLine();
+				nazev = sc.nextLine();
+				mojeKnihovna.ulozeniKnihy(nazev);
 				break;
 			case nacteniZeSouboru:
-				
+				System.out.println("\nZadejte nazev knihy kterou chcete nacist");
+				nazev = sc.nextLine();
+				nazev = sc.nextLine();
+				mojeKnihovna.nacteniKnihy(nazev);
 				break;
 			case konec:
 				mojeKnihovna.ulozeniDatabaze();
